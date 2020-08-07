@@ -2,6 +2,7 @@ package com.kodilla.testing.collection;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionTestSuite {
@@ -21,10 +22,11 @@ public class CollectionTestSuite {
     @Test
    void testOddNumbersExterminatorEmptyList() {
         // Given
-        List numbers = new List;
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        OddNumbersExterminator exterminator = new OddNumbersExterminator(numbers);
         numbers = null;
         // When
-        OddNumbersExterminator.exterminate();
+        exterminator.exterminate(numbers);
         // Then
         Assertions.assertEquals((Integer) null, null);
     };
@@ -35,15 +37,26 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         // Given
-        List<Integer> numbers = new List<Integer>
-        numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        OddNumbersExterminator exterminator = new OddNumbersExterminator(numbers);
+        int e;
+        for (e=1; e<11; e++) {
+            numbers.add(e);
+        }
+
 
         //When
-        OddNumbersExterminator.exterminate();
-        List<Integer> toCompareList = (2, 4, 6, 8, 10);
+        exterminator.exterminate(numbers);
+        ArrayList<Integer> toCompareList;
+        toCompareList = null;
+        int z;
+        for (z=0; z<11; z = z + 2){
+            toCompareList.add(z);
+        }
         //Then
-        Assertions.assertEquals(toCompareList, List<Integer> evenNumbers);
-        Assertions.assertEquals(List<Integer> toCompareList, List<Integer> evenNumbers);
+        Assertions.assertEquals(toCompareList, exterminator.exterminate(numbers));
+        System.out.println(toCompareList);
+        System.out.println(exterminator.exterminate(numbers));
     };
 
 }

@@ -1,30 +1,25 @@
 package com.kodilla.testing.collection;
-
-import java.util.*;
+import java.util.ArrayList;
 
 public class OddNumbersExterminator {
 
-    public static List<Integer> numbers;
-    public List<Integer> evenNumbers;
+    public ArrayList<Integer> numbers;
+    public ArrayList<Integer> evenNumbers;
 
-    public OddNumbersExterminator(List<Integer> numbers) {
+    public OddNumbersExterminator(ArrayList<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    public Integer exterminate(List<Integer> numbers) {
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
 
-        evenNumbers =null;
-        int number = 0;
-        for (number: numbers) {
+
+        for (int number: numbers) {
             if(number %2 == 0) {
                 evenNumbers.add(number);
             }
         }
+        return evenNumbers;
     }
-    public List<Integer> getEvenNumbers {
-        return this.evenNumbers;
-    }
-
 
 
 }
