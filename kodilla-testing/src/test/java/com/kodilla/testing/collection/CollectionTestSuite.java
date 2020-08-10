@@ -23,10 +23,10 @@ public class CollectionTestSuite {
    void testOddNumbersExterminatorEmptyList() {
         // Given
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        OddNumbersExterminator exterminator = new OddNumbersExterminator(numbers);
+        OddNumbersExterminator exterminator1 = new OddNumbersExterminator(numbers);
         numbers = null;
         // When
-        exterminator.exterminate(numbers);
+        exterminator1.exterminate(numbers);
         // Then
         Assertions.assertEquals((Integer) null, null);
     };
@@ -38,25 +38,21 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList() {
         // Given
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        OddNumbersExterminator exterminator = new OddNumbersExterminator(numbers);
-        int e;
-        for (e=1; e<11; e++) {
+        OddNumbersExterminator exterminator2 = new OddNumbersExterminator(numbers);
+        for (int e=1; e<11; e++) {
             numbers.add(e);
         }
 
-
         //When
-        exterminator.exterminate(numbers);
-        ArrayList<Integer> toCompareList;
-        toCompareList = null;
-        int z;
-        for (z=0; z<11; z = z + 2){
+        exterminator2.exterminate(numbers);
+        ArrayList<Integer> toCompareList = new ArrayList<>();
+        for (int z = 0; z<11; z = z + 2){
             toCompareList.add(z);
         }
         //Then
-        Assertions.assertEquals(toCompareList, exterminator.exterminate(numbers));
+        Assertions.assertEquals(toCompareList, exterminator2.exterminate(numbers));
         System.out.println(toCompareList);
-        System.out.println(exterminator.exterminate(numbers));
-    };
+        System.out.println(exterminator2.exterminate(numbers));
+    }
 
 }
