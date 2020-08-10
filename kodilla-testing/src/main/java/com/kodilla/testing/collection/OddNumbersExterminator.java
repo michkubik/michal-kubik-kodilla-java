@@ -3,11 +3,15 @@ import java.util.ArrayList;
 
 public class OddNumbersExterminator {
 
-    public ArrayList<Integer> numbers;
-    public ArrayList<Integer> evenNumbers;
+    public ArrayList<Integer> oddNumbers = new ArrayList<>();
+    public ArrayList<Integer> evenNumbers = new ArrayList<>();
 
-    public OddNumbersExterminator(ArrayList<Integer> numbers) {
-        this.numbers = numbers;
+    public ArrayList<Integer> getOddNumbers() {
+        return oddNumbers;
+    }
+
+    public ArrayList<Integer> getEvenNumbers() {
+        return evenNumbers;
     }
 
     public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
@@ -17,8 +21,12 @@ public class OddNumbersExterminator {
             if(number %2 == 0) {
                 evenNumbers.add(number);
             }
+            else {
+                oddNumbers.add(number);
+            }
         }
         return evenNumbers;
+
     }
 
 
