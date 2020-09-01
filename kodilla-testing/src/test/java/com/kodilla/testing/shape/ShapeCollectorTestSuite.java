@@ -37,30 +37,42 @@ public class ShapeCollectorTestSuite {
             @Test
             void testAddFigure() {
                 //Given
-                ArrayList<Shape> figures = new ArrayList<Shape>();
-                Circle circle = new Circle("Circle1", 12.56);
+                ShapeCollector shapeCollector = new ShapeCollector();
+                Shape circle = new Circle(3.00);
 
                 //When
-                figures.addFigure(circle);
+               shapeCollector.addFigure(circle);
 
                 //Then
-                Assertions.assertEquals(1, figures.size());
+                Assertions.assertEquals(1, shapeCollector.figures.size());
             }
 
             @Test
             void testRemoveFigure() {
                 //Given
-                ArrayList<Shape> figures = new ArrayList<Shape>();
-                Shape shape = new Circle("Circle1", 12.56);
-                figures.addFigure(shape);
+                ShapeCollector shapeCollector = new ShapeCollector();
+
+                Shape circle1 = new Circle(3.00);
+                Shape circle2 = new Circle(4.00);
+                shapeCollector.addFigure(circle1);
+                shapeCollector.addFigure(circle2);
+
+                Shape square1 = new Square(2.0);
+                Shape square2 = new Square(3.0);
+                shapeCollector.addFigure(square1);
+                shapeCollector.addFigure(square2);
+
+                Shape triangle1 = new Triangle(2.0, 3.0);
+                Shape triangle2 = new Triangle(3.0, 4.0);
+                shapeCollector.addFigure(triangle1);
+                shapeCollector.addFigure(triangle2);
 
                 //When
-                figures.removeFigure();
+                shapeCollector.removeFigure(circle1);
 
                 //Then
-                Assertions.assertEquals(0, figures.getShapesQuantity());
+                Assertions.assertEquals(5, shapeCollector.figures.size());
             }
-
 
         }
     @Nested
@@ -69,35 +81,41 @@ public class ShapeCollectorTestSuite {
         @Test
         void testGetFigure() {
             //Given
-            ArrayList<Shape> figures = new ArrayList<Shape>();
-            figures.addFigure(circle);
-            figures.addFigure(square);
-            figures.addFigure(triangle);
+            ShapeCollector shapeCollector = new ShapeCollector();
+
+            Shape circle = new Circle(2.0);
+            Shape square = new Square( 5.0);
+            Shape triangle = new Triangle(4.0, 3.0);
+
+            shapeCollector.addFigure(circle);
+            shapeCollector.addFigure(square);
+            shapeCollector.addFigure(triangle);
 
             //When
-            figures.getFigure(1);
+            shapeCollector.getFigure(1);
 
             //Then
-            Assertions.assertEquals(square, shapeCollector.getFigure(1));
+            Assertions.assertEquals("square", shapeCollector.figures.get(1));
         }
 
         @Test
         void testShowFigures() {
             //Given
-            ArrayList<Shape> figures = new ArrayList<Shape>()
-            Circle circle = new Circle("Circle1", 12.56);
-            Square square = new Square("Square1", 25.0);
-            Triangle triangle = new Triangle("Triangle1", 25.0);
+            ShapeCollector shapeCollector = new ShapeCollector();
 
-            figures.addFigure(circle);
-            figures.addFigure(square);
-            figures.addFigure(triangle);
+            Shape circle = new Circle(2.0);
+            Shape square = new Square( 5.0);
+            Shape triangle = new Triangle(4.0, 3.0);
+
+            shapeCollector.addFigure(circle);
+            shapeCollector.addFigure(square);
+            shapeCollector.addFigure(triangle);
 
             //When
-            figures.showFigures();
+            shapeCollector.showFigures();
 
             //Then
-            Assertions.assertEquals("circle, square, triangle", shapeCollector.showFigures(1));
+            Assertions.assertEquals("circle, square, triangle", shapeCollector.figures.toString());
         }
 
 
