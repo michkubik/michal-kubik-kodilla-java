@@ -1,7 +1,6 @@
 package com.kodilla.testing.shape;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ShapeCollector {
@@ -20,15 +19,29 @@ public class ShapeCollector {
 
     public void getFigure(int n) {
         //empty for now
-        figures.get(n);
+
+        Shape figure = figures.get(n);
+        String toString() {
+            String figureNew = figure.getShapeName();
+        }
+        //public String toString();
+        //return getFigure(n);
     }
 
-    public void showFigures() {
+
+    public String showFigures() {
         //empty for now
-        //for (Object shape: figures) {
-          //  Object figuresList = shape;
-           // System.out.println(shape);
-        //}
+
+       String figureList = "";
+        for (Shape figure : figures) {
+            figure.getShapeName();
+            figureList = figure + ", ";
+        }
+        System.out.println(figureList);
+        return null;
+
     }
 
 }
+
+
