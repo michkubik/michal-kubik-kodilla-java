@@ -44,7 +44,8 @@ public class ShapeCollectorTestSuite {
                shapeCollector.addFigure(circle);
 
                 //Then
-                Assertions.assertEquals(1, shapeCollector.figures.size());
+                Assertions.assertEquals(1, shapeCollector.getFigureCount());
+                Assertions.assertEquals(circle, shapeCollector.getFigure(0));
             }
 
             @Test
@@ -71,7 +72,7 @@ public class ShapeCollectorTestSuite {
                 shapeCollector.removeFigure(circle1);
 
                 //Then
-                Assertions.assertEquals(5, shapeCollector.figures.size());
+                Assertions.assertEquals(5, shapeCollector.getFigureCount());
             }
 
         }
@@ -92,10 +93,10 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addFigure(triangle);
 
             //When
-            shapeCollector.getFigure(1);
+            Shape result = shapeCollector.getFigure(1);
 
             //Then
-            Assertions.assertEquals("square", shapeCollector.figures.get(1));
+            Assertions.assertEquals(square, result);
         }
 
         @Test
@@ -112,10 +113,10 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addFigure(triangle);
 
             //When
-            shapeCollector.showFigures();
+            String result = shapeCollector.showFigures();
 
             //Then
-            Assertions.assertEquals("circle, square, triangle", shapeCollector.figures.toString());
+            Assertions.assertEquals("circle, square, triangle", result);
         }
 
 
