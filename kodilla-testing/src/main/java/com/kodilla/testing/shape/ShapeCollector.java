@@ -31,9 +31,11 @@ public class ShapeCollector {
         //empty for now
 
        String figureList = "";
-        for (Shape figure : figures) {
-            figureList += figure.getShapeName() + ", ";
-        }
+       figureList = getFigure(0).getShapeName();
+       for (int i=1; i < figures.size(); i++) {
+           figureList = figureList + ", " + getFigure(i).getShapeName();
+       }
+
         System.out.println(figureList);
         return figureList;
 
