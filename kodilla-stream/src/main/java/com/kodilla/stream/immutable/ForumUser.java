@@ -17,8 +17,4 @@ public final class ForumUser {
     public String getRealName() {
         return realName;
     }
-
-    public void changeUsername(String name) {
-        username = name;
-    }
 }
