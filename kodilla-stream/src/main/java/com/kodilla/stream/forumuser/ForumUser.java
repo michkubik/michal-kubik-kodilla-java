@@ -37,6 +37,7 @@ public final class ForumUser {
         return postsNumber;
     }
 
+
     @Override
     public String toString() {
         return "ForumUser{" +

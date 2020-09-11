@@ -11,6 +11,8 @@ import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalBeautifier;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,9 +47,11 @@ public class StreamMain {
         System.out.println(theResultStringOfBooks);
 
         Forum forum = new Forum();
+        LocalDate now = LocalDate.now();
+
         Map<Integer, ForumUser> theResultUserMap = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getGender() =='m')
-                .filter(forumUser -> forumUser.getBirthDate().getYear() < 2000)
+                .filter(forumUser -> (now.getYear() - forumUser.getBirthDate().getYear()) > 20)
                 .filter(forumUser -> forumUser.getPostsNumber() >= 1)
                 .collect(Collectors.toMap(forumUser -> forumUser.getUserID(), forumUser -> forumUser));
 
