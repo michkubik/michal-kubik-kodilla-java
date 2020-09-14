@@ -13,18 +13,18 @@ public class WorldTestSuite {
     @Test
     void testGetPeopleQuantity() {
         // Given
-        Country country1 = new Country("Country A", new BigDecimal(35000000.00));
-        Country country2 = new Country("Country B", new BigDecimal(155000000.00));
-        Country country3 = new Country("Country C", new BigDecimal(350000000.00));
+        Country country1 = new Country("Country A", new BigDecimal("35000000"));
+        Country country2 = new Country("Country B", new BigDecimal("155000000"));
+        Country country3 = new Country("Country C", new BigDecimal("350000000"));
 
         ArrayList<Country> countryList1 = new ArrayList();
         countryList1.add(country1);
         countryList1.add(country2);
         countryList1.add(country3);
 
-        Country country4 = new Country("Country D", new BigDecimal(1000000000.00));
-        Country country5 = new Country("Country E", new BigDecimal(1900000000.00));
-        Country country6 = new Country("Country F", new BigDecimal(900000000.00));
+        Country country4 = new Country("Country D", new BigDecimal("1000000000"));
+        Country country5 = new Country("Country E", new BigDecimal("1900000000"));
+        Country country6 = new Country("Country F", new BigDecimal("900000000"));
 
         ArrayList<Country> countryList2 = new ArrayList();
         countryList2.add(country4);
