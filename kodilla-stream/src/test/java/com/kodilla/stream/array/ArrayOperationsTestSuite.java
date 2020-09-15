@@ -25,7 +25,8 @@ public class ArrayOperationsTestSuite {
                 .average();
 
         //Then
-        Assertions.assertEquals(9.50, averageNew);
+        OptionalDouble expectedAverage = OptionalDouble.of(9.50);
+        Assertions.assertEquals(expectedAverage, averageNew);
 
     }
 }
