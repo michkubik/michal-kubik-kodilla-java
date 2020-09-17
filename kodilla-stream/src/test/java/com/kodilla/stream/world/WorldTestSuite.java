@@ -39,6 +39,7 @@ public class WorldTestSuite {
         continents.add((Continent) continent1);
         continents.add((Continent) continent2);
         World world = new World(continents);
+        //klasa wolrd bedzie miała metodę add continent np continent1.addCountry
 
 
         // Then

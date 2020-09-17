@@ -23,6 +23,7 @@ public class ArrayOperationsTestSuite {
                 .forEach(n -> System.out.println());
         OptionalDouble averageNew = IntStream.range(0, numbers.length)
                 .average();
+        // or.else po obliczeniu average - zwraca wartość domyślną jeśli ptional jest pusty i eliminuje optional
 
         //Then
         OptionalDouble expectedAverage = OptionalDouble.of(9.50);
