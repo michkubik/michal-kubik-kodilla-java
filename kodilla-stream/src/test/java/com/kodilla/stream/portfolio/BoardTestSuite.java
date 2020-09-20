@@ -87,10 +87,20 @@ class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        Double tasksTime = project.getTaskLists().stream()
+        Integer tasksTime = project.getTaskLists().stream()
                 .flatMap(n -> n.getTasks().stream())
-                .map(i -> LocalDate.now().minus(i.getDeadline()))
-                .reduce(0, (sum, current) -> sum = sum.plus(current));
+                .filter(s -> s.getTitle().contains("In progress"))
+                .map(i -> Period.between(LocalDate.now(), i.getCreated()).getDays())
+                .reduce(0, (sum, current) -> sum = sum + (current));
+
+        Integer taskNumber = project.getTaskLists().stream()
+                .flatMap(n -> n.getTasks().stream())
+                .filter(s -> s.getTitle().contains("In progress"))
+                .reduce(inProgressTasks.size());
+
+
+
+
 
         /*List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
@@ -101,6 +111,7 @@ class BoardTestSuite {
 
         //Then
         assertEquals(30, tasksTime);
+
 
     }
 

@@ -1,7 +1,6 @@
 package com.kodilla.stream.portfolio;
 
 import java.time.LocalDate;
-import java.time.temporal.TemporalAmount;
 
 public final class Task {
     private final String title;
@@ -40,7 +39,7 @@ public final class Task {
         return created;
     }
 
-    public TemporalAmount getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
