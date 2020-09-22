@@ -3,10 +3,10 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -87,30 +87,16 @@ class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        Integer tasksTime = project.getTaskLists().stream()
-                .flatMap(n -> n.getTasks().stream())
-                .filter(s -> s.getTitle().contains("In progress"))
-                .map(i -> Period.between(LocalDate.now(), i.getCreated()).getDays())
-                .reduce(0, (sum, current) -> sum = sum + (current));
-
-        Integer taskNumber = project.getTaskLists().stream()
-                .flatMap(n -> n.getTasks().stream())
-                .filter(s -> s.getTitle().contains("In progress"))
-                .reduce(inProgressTasks.size());
-
-
-
-
-
-        /*List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-        Period tasksTime = project.getTaskLists().stream()
-                .flatMap(n -> n.getTasks().stream())
-                .map(i -> Period.between(LocalDate.now(), i.getDeadline()))
-                .reduce(Period.ofDays(0), (sum, current) -> sum = sum.plus(current)); */
+        Long averageWorkingDays = Math.round(
+                project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToLong(task -> DAYS.between(task.getCreated(), LocalDate.now()))
+                .average().getAsDouble()
+        );
 
         //Then
-        assertEquals(30, tasksTime);
+        assertEquals(10, averageWorkingDays);
 
 
     }
