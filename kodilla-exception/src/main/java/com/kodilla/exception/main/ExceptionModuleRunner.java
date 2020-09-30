@@ -15,9 +15,14 @@ public class ExceptionModuleRunner {
         }*/
 
         Flight flight = new Flight("Warsaw", "Moscow");
-        FlightFinder flightFinder = new FlightFinder(flight);
+        FlightFinder flightFinder = new FlightFinder();
         try {
-            flightFinder.findFlight(flight);
+            boolean result = flightFinder.findFlight(flight);
+            if (result) {
+                System.out.println("The flight has been found");
+            } else {
+                System.out.println("The flight is not available now!");
+            }
         } catch (RouteNotFoundException e) {
             System.out.println("Arrival airport not found!");
         }
