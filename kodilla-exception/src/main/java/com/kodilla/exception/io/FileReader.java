@@ -15,7 +15,20 @@ public class FileReader {
         Path path = Paths.get(file.getPath());
         try (Stream<String> fileLines = Files.lines(Paths.get(file.getPath()))) {
             fileLines.forEach(System.out::println);
+            System.out.println(file.getPath());
         } catch (IOException e) {
+            throw new FileReaderException();
+        } finally {
+            System.out.println("I am gonna be here... always!");
+        }
+    }
+
+    public void readFile(final String fileName) throws FileReaderException {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        try (Stream<String> fileLines = Files.lines(Path.of(classLoader.getResource(fileName).toURI()))) {
+            fileLines.forEach(System.out::println);
+        } catch (Exception e) {
             throw new FileReaderException();
         } finally {
             System.out.println("I am gonna be here... always!");
