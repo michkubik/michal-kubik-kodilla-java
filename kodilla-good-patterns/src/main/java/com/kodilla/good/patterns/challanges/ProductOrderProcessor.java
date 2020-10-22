@@ -7,22 +7,22 @@ public class ProductOrderProcessor {
     private InformationService informationService;
     private ProductOrderService productOrderService;
     private PurchaseRepository purchaseRepository;
-    private OrderBasket orderBasket;
+    private Order order;
 
     public ProductOrderProcessor(final InformationService informationService,
                                final ProductOrderService productOrderService,
-                               final PurchaseRepository purchaseRepository, final OrderBasket orderBasket) {
+                               final PurchaseRepository purchaseRepository, final Order order) {
         this.informationService = informationService;
         this.productOrderService = productOrderService;
         this.purchaseRepository = purchaseRepository;
-        this.orderBasket = orderBasket;
+        this.order = order;
     }
 
     public RentalDto process(final RentRequest rentRequest) {
-        boolean isRented = rentalService.rent(rentRequest.getUser(), rentRequest.getFrom(),
+        boolean isSent = productOrderService.send(rentRequest.getUser(), rentRequest.getFrom(),
                 rentRequest.getTo());
 
-        if (isRented) {
+        if (isSent) {
             informationService.inform(rentRequest.getUser());
             rentalRepository.createRental(rentRequest.getUser(), rentRequest.getFrom(), rentRequest.getTo());
             return new RentalDto(rentRequest.getUser(), true);
