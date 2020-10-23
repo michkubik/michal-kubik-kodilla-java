@@ -4,30 +4,30 @@ package com.kodilla.good.patterns.challanges;
 
 public class ProductOrderProcessor {
 
-    private InformationService informationService;
+    private InformationService emailService;
     private ProductOrderService productOrderService;
-    private PurchaseRepository purchaseRepository;
+    private ProductOrderRepository productOrderRepository;
     private Order order;
+    private OrderDto orderDto;
 
-    public ProductOrderProcessor(final InformationService informationService,
-                               final ProductOrderService productOrderService,
-                               final PurchaseRepository purchaseRepository, final Order order) {
-        this.informationService = informationService;
+    public ProductOrderProcessor(final InformationService emailService,
+                                 final ProductOrderService productOrderService,
+                                 final ProductOrderRepository productOrderRepository, final Order order) {
+        this.emailService = emailService;
         this.productOrderService = productOrderService;
-        this.purchaseRepository = purchaseRepository;
+        this.productOrderRepository = productOrderRepository;
         this.order = order;
     }
 
-    public RentalDto process(final RentRequest rentRequest) {
-        boolean isSent = productOrderService.send(rentRequest.getUser(), rentRequest.getFrom(),
-                rentRequest.getTo());
+    public OrderDto process(final Order order) {
+        boolean isSent = productOrderService.send(order.getUser(), order, order.getOrderDate());
 
         if (isSent) {
-            informationService.inform(rentRequest.getUser());
-            rentalRepository.createRental(rentRequest.getUser(), rentRequest.getFrom(), rentRequest.getTo());
-            return new RentalDto(rentRequest.getUser(), true);
+            emailService.informUser(order.getUser());
+            return new OrderDto(orderDto.getUser(), orderDto.getBasket(), true);
         } else {
-            return new RentalDto(rentRequest.getUser(), false);
+            return new OrderDto(order.getUser(), orderDto.getBasket(), false);
         }
+    }
 
 }

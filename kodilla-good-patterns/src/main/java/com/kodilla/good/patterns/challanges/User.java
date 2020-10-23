@@ -2,9 +2,21 @@ package com.kodilla.good.patterns.challanges;
 
 //interfejs tworzenia użytkownika (?)
 
-public interface User {
+public class User {
 
-    public String getName();
+    String name;
+    String userName;
 
+    public User(String name, String userName) {
+        this.name = name;
+        this.userName = userName;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
 }
