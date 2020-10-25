@@ -8,7 +8,7 @@ public class ProductOrderProcessor {
     private ProductOrderService productOrderService;
     private ProductOrderRepository productOrderRepository;
     private Order order;
-    private OrderDto orderDto;
+
 
     public ProductOrderProcessor(final InformationService emailService,
                                  final ProductOrderService productOrderService,
@@ -24,9 +24,9 @@ public class ProductOrderProcessor {
 
         if (isSent) {
             emailService.informUser(order.getUser());
-            return new OrderDto(orderDto.getUser(), orderDto.getBasket(), true);
+            return new OrderDto(order.getUser(), order.getBasket(), true);
         } else {
-            return new OrderDto(order.getUser(), orderDto.getBasket(), false);
+            return new OrderDto(order.getUser(), order.getBasket(), false);
         }
     }
 

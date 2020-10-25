@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.challanges;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrderRequestRetriever {
@@ -12,16 +13,15 @@ public class OrderRequestRetriever {
 
         LocalDate orderDate = new LocalDate(2020-10-21);
 
+        Basket basket = new Basket();
         List goodsInBasket = new ArrayList();
         goodsInBasket.add("Żelazko");
         goodsInBasket.add("Kapcie");
         goodsInBasket.add("Suszarka");
 
-        int orderNumber = new
+        int orderNumber = 0001;
 
-        Basket basket = new Basket(goodsInBasket);
-
-        return new Order(user, orderDate, orderNumber, goodsInBasket);
+        return new Order(user, orderDate, orderNumber, basket);
     }
 
 }
