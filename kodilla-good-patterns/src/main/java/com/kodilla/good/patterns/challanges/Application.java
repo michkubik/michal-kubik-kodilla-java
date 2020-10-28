@@ -1,18 +1,27 @@
 package com.kodilla.good.patterns.challanges;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Application {
+
+
+
+
 
     public static void main (String[] args) {
 
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
-        Order order = orderRequestRetriever.retrieve();
+        OrderRequest order = orderRequestRetriever.retrieve();
 
-        ProductOrderProcessor productOrderProcessor = new ProductOrderProcessor(new EmailService(), new ProductOrderService(), new ProductOrderRepository(), new Order());
+        Map<String, BigDecimal> priceList = new HashMap<>();
+        priceList.put("Żelazko", BigDecimal.valueOf(10));
+        priceList.put("Kapcie", BigDecimal.valueOf(5));
+        priceList.put("Suszarka", BigDecimal.valueOf(20));
+
+
+        ProductOrderProcessor productOrderProcessor = new ProductOrderProcessor(new EmailService(), new ProductOrderService(), new ProductOrderRepository(priceList));
         productOrderProcessor.process(order);
 
 

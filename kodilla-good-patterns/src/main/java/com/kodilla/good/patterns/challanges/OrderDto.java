@@ -1,15 +1,20 @@
 package com.kodilla.good.patterns.challanges;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public class OrderDto {
 
-    public User user;
-    public boolean isSent;
-    public Basket basket;
+    private User user;
+    private boolean isSent;
+    private List<String> orderedGoods;
+    private BigDecimal amount;
 
-    public OrderDto(User user, Basket basket, boolean isSent) {
+    public OrderDto(User user, boolean isSent, List<String> orderedGoods, BigDecimal amount) {
         this.user = user;
         this.isSent = isSent;
-        this.basket = basket;
+        this.orderedGoods = orderedGoods;
+        this.amount = amount;
     }
 
     public User getUser() {
@@ -20,7 +25,15 @@ public class OrderDto {
         return isSent;
     }
 
-    public Basket getBasket() {
-        return basket;
+    public List<String> getOrderedGoods() {
+        return orderedGoods;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
     }
 }

@@ -2,31 +2,34 @@ package com.kodilla.good.patterns.challanges;
 
 //klasa ma odpowiadać za obsługę procesu/przetwarzanie zamowienia
 
+import java.math.BigDecimal;
+import java.util.Collections;
+
 public class ProductOrderProcessor {
 
-    private InformationService emailService;
+    private InformationService informationService;
     private ProductOrderService productOrderService;
     private ProductOrderRepository productOrderRepository;
-    private Order order;
+    // private Order order; - order niesie dane (interfejsy tu albo coś robią, albo niosą dane)
 
 
-    public ProductOrderProcessor(final InformationService emailService,
+    public ProductOrderProcessor(final InformationService informationService,
                                  final ProductOrderService productOrderService,
-                                 final ProductOrderRepository productOrderRepository, final Order order) {
-        this.emailService = emailService;
+                                 final ProductOrderRepository productOrderRepository) {
+        this.informationService = informationService;
         this.productOrderService = productOrderService;
         this.productOrderRepository = productOrderRepository;
-        this.order = order;
     }
 
-    public OrderDto process(final Order order) {
-        boolean isSent = productOrderService.send(order.getUser(), order, order.getOrderDate());
+    public OrderDto process(final OrderRequest orderRequest) {
+        boolean isSent = productOrderService.send(orderRequest.getUser(), orderRequest, orderRequest.getOrderDate());
 
         if (isSent) {
-            emailService.informUser(order.getUser());
-            return new OrderDto(order.getUser(), order.getBasket(), true);
+            BigDecimal totalAmount = productOrderRepository.calculateAmountAndStore(orderRequest.getOrderedGoods());
+            informationService.informUser(orderRequest.getUser(), orderRequest.getOrderedGoods(), totalAmount);
+            return new OrderDto(orderRequest.getUser(), true, orderRequest.getOrderedGoods(), totalAmount);
         } else {
-            return new OrderDto(order.getUser(), order.getBasket(), false);
+            return new OrderDto(orderRequest.getUser(), false, Collections.emptyList(), BigDecimal.ZERO);
         }
     }
 

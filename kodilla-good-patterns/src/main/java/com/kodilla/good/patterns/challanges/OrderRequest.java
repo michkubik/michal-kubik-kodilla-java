@@ -3,19 +3,20 @@ package com.kodilla.good.patterns.challanges;
 //koszyk zakupów (?)
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class Order {
+public class OrderRequest {
 
-    User user;
-    LocalDate orderDate;
-    int orderNumber;
-    Basket basket;
+    private User user;
+    private LocalDate orderDate;
+    private int orderNumber;
+    private List<String> orderedGoods;
 
-    public Order(User user, LocalDate orderDate, int orderNumber, Basket basket) {
+    public OrderRequest(User user, LocalDate orderDate, int orderNumber, List<String> orderedGoods) {
         this.user = user;
         this.orderDate = orderDate;
         this.orderNumber = orderNumber;
-        this.basket = basket;
+        this.orderedGoods = orderedGoods;
     }
 
     public User getUser() {
@@ -30,7 +31,7 @@ public class Order {
         return orderNumber;
     }
 
-    public Basket getBasket() {
-        return basket;
+    public List<String> getOrderedGoods() {
+        return orderedGoods;
     }
 }
