@@ -9,8 +9,8 @@ public class OrderRequestRetriever {
     public OrderRequest retrieve() {
 
         User user = new User("Jan Kowalski", "kowal99");
-        LocalDate orderDate = LocalDate.ofEpochDay(2020-10-21);
-        int orderNumber = 0000123;
+        LocalDate orderDate = LocalDate.of(2020, 10, 25);
+        int orderNumber = 3456;
 
         List<String> orderedGoods = new ArrayList<>();
         orderedGoods.add("Żelazko");

@@ -6,10 +6,6 @@ import java.util.Map;
 
 public class Application {
 
-
-
-
-
     public static void main (String[] args) {
 
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
@@ -20,12 +16,7 @@ public class Application {
         priceList.put("Kapcie", BigDecimal.valueOf(5));
         priceList.put("Suszarka", BigDecimal.valueOf(20));
 
-
         ProductOrderProcessor productOrderProcessor = new ProductOrderProcessor(new EmailService(), new ProductOrderService(), new ProductOrderRepository(priceList));
         productOrderProcessor.process(order);
-
-
-
     }
-
 }
