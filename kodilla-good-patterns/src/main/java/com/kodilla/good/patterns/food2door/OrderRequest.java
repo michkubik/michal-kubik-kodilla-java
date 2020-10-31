@@ -1,11 +1,13 @@
 package com.kodilla.good.patterns.food2door;
 
+import java.math.BigDecimal;
+
 public class OrderRequest {
     private Shop shop;
     private String product;
-    private double productAmount;
+    private BigDecimal productAmount;
 
-    public OrderRequest(Shop shop, String product, double productAmount) {
+    public OrderRequest(Shop shop, String product, BigDecimal productAmount) {
         this.shop = shop;
         this.product = product;
         this.productAmount = productAmount;
@@ -19,7 +21,7 @@ public class OrderRequest {
         return product;
     }
 
-    public double getProductAmount() {
+    public BigDecimal getProductAmount() {
         return productAmount;
     }
 }
