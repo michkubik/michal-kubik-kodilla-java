@@ -34,9 +34,9 @@ public class FlightApp {
         flightsToPoznan.stream()
                 .forEach(System.out::println);
 
-        List<Flight> flightsToPoznanViaCracow = flightProcessor.findFlightsVia("Gdansk", "Cracow", "Poznan");
-        System.out.println("\nFlights to Poznan via Cracow:");
-        flightsToPoznanViaCracow.stream()
+        List<Flight[]> flightsToPoznanWithTransfer = flightProcessor.findFlightsVia("Gdansk", "Poznan");
+        System.out.println("\nFlights to Poznan with Transfer:");
+        flightsToPoznanWithTransfer.stream()
                 .forEach(System.out::println);
 
 

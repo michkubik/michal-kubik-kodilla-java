@@ -1,5 +1,6 @@
 package com.kodilla.good.patterns.flightconnector;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,21 +24,19 @@ public class FlightProcessor {
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> findFlightsVia(String departureAirport, String viaAirport, String destinationAirport) {
+    public List<Flight[]> findFlightsVia(String departureAirport, /*String viaAirport, */String destinationAirport) {
 
-        /*List<Flight> viaFlights = findFlightsTo(viaAirport);
-        return viaFlights.stream()
-                .filter(z -> z.getDestinationAirport().equals(destinationAirport))
-                .collect(Collectors.toList());
-*/
-        return flights.stream()
-                .filter(z -> z.getDepartureAirport().equals(departureAirport))
-                .collect(Collectors.toList()).stream()
-                    .filter(x -> x.getDestinationAirport().equals(viaAirport))
-                    .collect(Collectors.toList()).stream()
-                        .filter(y -> y.getDestinationAirport().equals(destinationAirport))
-                        .collect(Collectors.toList());
+        List<Flight> listOfFlightsFrom = findFlightsFrom(departureAirport);
+        List<Flight> listOfFlightsTo = findFlightsTo(destinationAirport);
+        List<Flight[]> listOfFlightsWithTransfer = new ArrayList<>();
+        for (Flight flight : listOfFlightsFrom) {
+            listOfFlightsTo.stream()
+                    .filter(e -> e.getDepartureAirport().equals(flight.getDestinationAirport()))
+                    .map(e -> new Flight[]{flight, e})
+                    .forEach(listOfFlightsWithTransfer::add);
+        }
 
+        return listOfFlightsWithTransfer;
 
 
     }

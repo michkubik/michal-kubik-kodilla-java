@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.flightconnector;
 
+import java.util.Objects;
+
 public class Flight {
 
     private String departureAirport;
@@ -33,9 +35,9 @@ public class Flight {
 
         Flight flight = (Flight) o;
 
-        if (departureAirport != null ? !departureAirport.equals(flight.departureAirport) : flight.departureAirport != null)
+        if (!Objects.equals(departureAirport, flight.departureAirport))
             return false;
-        return destinationAirport != null ? destinationAirport.equals(flight.destinationAirport) : flight.destinationAirport == null;
+        return Objects.equals(destinationAirport, flight.destinationAirport);
     }
 
     @Override
