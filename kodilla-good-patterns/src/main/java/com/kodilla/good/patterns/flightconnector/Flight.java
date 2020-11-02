@@ -6,6 +6,7 @@ public class Flight {
 
     private String departureAirport;
     private String destinationAirport;
+    private String transferAirport;
 
     public Flight(String departureAirport, String destinationAirport) {
         this.departureAirport = departureAirport;
@@ -20,11 +21,16 @@ public class Flight {
         return destinationAirport;
     }
 
+   /* public String getTransferAirport() {
+        return transferAirport;
+    }*/
+
     @Override
     public String toString() {
         return "Flight{" +
                 "departureAirport='" + departureAirport + '\'' +
-                ", destinationAirport='" + destinationAirport + '\'' +
+                ", destinationAirport='" + destinationAirport + '\'' /*+
+                ", transferAirport='" + transferAirport + '\'' */+
                 '}';
     }
 

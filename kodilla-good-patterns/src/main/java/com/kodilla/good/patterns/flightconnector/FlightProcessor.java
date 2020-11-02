@@ -36,9 +36,17 @@ public class FlightProcessor {
                     .forEach(listOfFlightsWithTransfer::add);
         }
 
+        /*List<Flight> listOfFlightsFrom = findFlightsFrom(departureAirport);
+        List<Flight> listOfFlightsTo = findFlightsTo(destinationAirport);
+        List<Flight> listOfFlightsWithTransfer = new ArrayList<>();
+        for (Flight flight : listOfFlightsFrom) {
+            listOfFlightsTo.stream()
+                    .filter(e -> e.getDepartureAirport().equals(flight.getDestinationAirport()))
+                    .collect(Collectors.toList());
+            listOfFlightsWithTransfer.add(flight);
+        }*/
+
         return listOfFlightsWithTransfer;
-
-
     }
 
 }

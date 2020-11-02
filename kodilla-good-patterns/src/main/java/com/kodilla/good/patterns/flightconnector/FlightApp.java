@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.flightconnector;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FlightApp {
@@ -37,7 +38,8 @@ public class FlightApp {
         List<Flight[]> flightsToPoznanWithTransfer = flightProcessor.findFlightsVia("Gdansk", "Poznan");
         System.out.println("\nFlights to Poznan with Transfer:");
         flightsToPoznanWithTransfer.stream()
-                .forEach(System.out::println);
+                .forEach(e -> System.out.println(Arrays.deepToString(e)));
+
 
 
 
