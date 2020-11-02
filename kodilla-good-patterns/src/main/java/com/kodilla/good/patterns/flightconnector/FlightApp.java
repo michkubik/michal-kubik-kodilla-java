@@ -27,17 +27,17 @@ public class FlightApp {
         FlightProcessor flightProcessor = new FlightProcessor(flights);
         List<Flight> flightsFromWarsaw = flightProcessor.findFlightsFrom("Warsaw");
         System.out.println("Flights to Warsaw:");
-        flightsFromWarsaw.stream()
+        flightsFromWarsaw
                 .forEach(System.out::println);
 
         List<Flight> flightsToPoznan = flightProcessor.findFlightsTo("Poznan");
         System.out.println("\nFlights to Poznan:");
-        flightsToPoznan.stream()
+        flightsToPoznan
                 .forEach(System.out::println);
 
         List<Flight[]> flightsToPoznanWithTransfer = flightProcessor.findFlightsVia("Gdansk", "Poznan");
         System.out.println("\nFlights to Poznan with Transfer:");
-        flightsToPoznanWithTransfer.stream()
+        flightsToPoznanWithTransfer
                 .forEach(e -> System.out.println(Arrays.deepToString(e)));
 
 
