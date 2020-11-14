@@ -6,9 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootTest
 public class BoardTestSuite {
 
@@ -21,12 +18,14 @@ public class BoardTestSuite {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Board board = context.getBean(Board.class);
-        TaskList taskList = new ArrayList<>();
+        TaskList taskList = new TaskList();
+        toDoList = board.getToDoList();
+        taskList = board.getToDoList();
+        taskList = board.getDoneList();
 
+        //When & Then
+        board.getToDoList().getTasks();
 
-
-        //When
-        String task = board.getToDoList().getTasks();
 
         //Then
 
