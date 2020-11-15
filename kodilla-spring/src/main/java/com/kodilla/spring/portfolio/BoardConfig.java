@@ -10,13 +10,25 @@ public class BoardConfig {
 
     @Bean
     @Scope("prototype")
-    public TaskList getTaskList() {
+    public TaskList getToDoList() {
+        return new TaskList();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public TaskList getInProgressList() {
+        return new TaskList();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public TaskList getDoneList() {
         return new TaskList();
     }
 
     @Bean
     Board getBoard() {
-        return new Board(getTaskList(), getTaskList(), getTaskList());
+        return new Board(getToDoList(), getInProgressList(), getDoneList());
     }
 
 }

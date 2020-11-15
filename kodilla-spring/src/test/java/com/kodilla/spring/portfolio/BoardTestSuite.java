@@ -18,17 +18,29 @@ public class BoardTestSuite {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Board board = context.getBean(Board.class);
-        TaskList taskList = new TaskList();
-        toDoList = board.getToDoList();
-        taskList = board.getToDoList();
-        taskList = board.getDoneList();
 
-        //When & Then
-        board.getToDoList().getTasks();
-
+        //When
+        board.getToDoList().getTasks().add("Kupić makaron");
+        board.getInProgressList().getTasks().add("Napisać maila");
+        board.getDoneList().getTasks().add("Zrobić ciasto");
 
         //Then
+        if (board.getToDoList().getTasks().contains("Kupić makaron")) {
+            System.out.println("Zadanie >> " + board.getToDoList().getTasks().get(0) + " << jest na liście!");
+        } else {
+            System.out.println("Nie ma na liście takiego zadania!");
+        };
 
+        if (board.getInProgressList().getTasks().contains("Napisać maila")) {
+            System.out.println("Zadanie >> " + board.getInProgressList().getTasks().get(0) + " << jest na liście!");
+        } else {
+            System.out.println("Nie ma na liście takiego zadania!");
+        };
+
+        if (board.getDoneList().getTasks().contains("Zrobić ciasto")) {
+            System.out.println("Zadanie >> " + board.getDoneList().getTasks().get(0) + " << jest na liście!");
+        } else {
+            System.out.println("Nie ma na liście takiego zadania!");
+        };
     }
-
 }
