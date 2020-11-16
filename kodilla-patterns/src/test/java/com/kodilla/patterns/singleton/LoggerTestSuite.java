@@ -21,7 +21,7 @@ public class LoggerTestSuite {
     void testGetLastLog() {
 
         //Given
-        Logger logger = new Logger();
+        logger = Logger.INSTANCE;
 
         //When
         logger.log("Log 1: Change font");
