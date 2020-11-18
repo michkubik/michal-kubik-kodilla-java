@@ -3,6 +3,8 @@ package com.kodilla.patterns.prototype.library;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LibraryTestSuite {
 
     @Test
@@ -20,10 +22,23 @@ public class LibraryTestSuite {
         westernLibrary.getBooks().add(book3);
         westernLibrary.getBooks().add(book4);
 
+        //Shallow clone
+        Library clonedLibrary = null;
+        try {
+            clonedLibrary = westernLibrary.shallowCopy();
+            clonedLibrary.setName("CowboyBooks");
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
+        }
+
+
         //When
         System.out.println(westernLibrary.getBooks().toString());
+        System.out.println(clonedLibrary.getBooks().toString());
 
         //Then
+        assertEquals(4, westernLibrary.getBooks().size());
+        assertEquals(4, clonedLibrary.getBooks().size());
 
 
 
