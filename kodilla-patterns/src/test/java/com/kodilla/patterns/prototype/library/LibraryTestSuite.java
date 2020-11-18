@@ -26,19 +26,35 @@ public class LibraryTestSuite {
         Library clonedLibrary = null;
         try {
             clonedLibrary = westernLibrary.shallowCopy();
-            clonedLibrary.setName("CowboyBooks");
+            clonedLibrary.setName("Cowboy Books");
         } catch (CloneNotSupportedException e) {
             System.out.println(e);
         }
 
+        //DeepClone
+        Library deepClonedLibrary = null;
+        try {
+            deepClonedLibrary = westernLibrary.deepCopy();
+            deepClonedLibrary.setName("Adventure Books");
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
+        }
 
-        //When
         System.out.println(westernLibrary.getBooks().toString());
         System.out.println(clonedLibrary.getBooks().toString());
+        System.out.println(deepClonedLibrary.getBooks().toString());
+
+        //When
+        westernLibrary.getBooks().remove(book1);
+
+        System.out.println("\n" + westernLibrary.getName() + " contains: " + westernLibrary.getBooks().size() + " books.");
+        System.out.println(clonedLibrary.getName() + " contains: " + clonedLibrary.getBooks().size() + " books.");
+        System.out.println(deepClonedLibrary.getName() + " contains: " + deepClonedLibrary.getBooks().size() + " books. \n");
 
         //Then
-        assertEquals(4, westernLibrary.getBooks().size());
-        assertEquals(4, clonedLibrary.getBooks().size());
+        assertEquals(3, westernLibrary.getBooks().size());
+        assertEquals(3, clonedLibrary.getBooks().size());
+        assertEquals(4, deepClonedLibrary.getBooks().size());
 
 
 
