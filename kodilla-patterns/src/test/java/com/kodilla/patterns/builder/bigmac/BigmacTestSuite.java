@@ -2,6 +2,7 @@ package com.kodilla.patterns.builder.bigmac;
 
 import org.junit.jupiter.api.Test;
 
+import static com.kodilla.patterns.builder.bigmac.Bigmac.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BigmacTestSuite {
@@ -11,11 +12,11 @@ public class BigmacTestSuite {
 
         //Given
         Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .bun("With sesame")
+                .bun(SESAME)
                 .burgers(2)
-                .sauce("Standard")
-                .ingredient("Cheese")
-                .ingredient("Onion")
+                .sauce(STANDARD_SAUCE)
+                .ingredient(CHEESE)
+                .ingredient(ONION)
                 .build();
         System.out.println(bigmac);
 

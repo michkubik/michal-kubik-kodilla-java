@@ -5,6 +5,21 @@ import java.util.List;
 
 public final class Bigmac {
 
+    public static final String SESAME = "SESAME";
+    public static final String NO_SESAME = "NO SESAME";
+    public static final String STANDARD_SAUCE = "Standard";
+    public static final String ISLANDS_SAUCE = "1000 Islands";
+    public static final String BARBECUE_SAUCE = "Barbecue";
+    public static final String SALAD = "Salad";
+    public static final String ONION = "Onion";
+    public static final String BACON = "Bacon";
+    public static final String CUCUMBER = "Cucumber";
+    public static final String CHILLI = "Chilli";
+    public static final String MUSHROOMS = "Mushrooma";
+    public static final String SHRIMPS = "Shrimps";
+    public static final String CHEESE = "Cheese";
+
+
     private final String bun;
     private final int burgers;
     private final String sauce;
@@ -17,7 +32,11 @@ public final class Bigmac {
         private List<String> ingredients = new ArrayList<>();
 
         public BigmacBuilder bun(String bun) {
-            this.bun = bun;
+            if (bun.equals(SESAME) || bun.equals(NO_SESAME)) {
+                this.bun = bun;
+            } else {
+                throw new IllegalStateException("Bun can be with or without sesame");
+            }
             return this;
         }
 
@@ -27,12 +46,20 @@ public final class Bigmac {
         }
 
         public BigmacBuilder sauce(String sauce) {
-            this.sauce = sauce;
+            if (sauce.equals(STANDARD_SAUCE) || sauce.equals(ISLANDS_SAUCE) || sauce.equals(BARBECUE_SAUCE)) {
+                this.sauce = sauce;
+            } else {
+                throw new IllegalStateException("No such sauce!");
+            }
             return this;
         }
 
         public BigmacBuilder ingredient(String ingredient) {
-            ingredients.add(ingredient);
+            if (ingredient.equals(SALAD) || ingredient.equals(ONION) || ingredient.equals(BACON) || ingredient.equals(CUCUMBER) || ingredient.equals(CHILLI) || ingredient.equals(MUSHROOMS) || ingredient.equals(SHRIMPS) || ingredient.equals(CHEESE)) {
+                ingredients.add(ingredient);
+            } else {
+                throw new IllegalStateException("No such ingredient!");
+            }
             return this;
         }
 
