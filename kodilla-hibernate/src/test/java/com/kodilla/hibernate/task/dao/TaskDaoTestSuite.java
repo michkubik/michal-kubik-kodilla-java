@@ -69,7 +69,20 @@ public class TaskDaoTestSuite {
         assertNotEquals(0, id);
 
         //CleanUp
-        //taskDao.deleteById(id);
+        //taskDao.deleteById(18);
     }
+
+   /* @Test
+    void testTaskDaoSaveWithTaskList() {
+        //Given
+        Task task = new Task(DESCRIPTION, 25);
+
+        //When
+
+        //Then
+
+        //CleanUp
+
+    }*/
 
 }

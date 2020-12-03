@@ -13,6 +13,7 @@ public final class Task {
     private Date created;
     private int duration;
     private TaskFinancialDetails taskFinancialDetails;
+    private TaskList taskList;
 
     public Task() {
     }
@@ -61,6 +62,16 @@ public final class Task {
 
     private void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "TASKLISTS_ID")
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
     }
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
