@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "PRODUCT")
-public class Product {
+@Table(name = "INVOICE")
+public class Invoice {
 
     private int id;
-    private String name;
+    private String number;
     private List<Item> items = new ArrayList<>();
 
-    public Product() {
+    public Invoice() {
     }
 
-    public Product(String name) {
-        this.name = name;
+    public Invoice(String number) {
+        this.number = number;
     }
 
     @Id
@@ -29,30 +29,32 @@ public class Product {
     }
 
     @NotNull
-    @Column(name = "NAME")
-    public String getName() {
-        return name;
+    @Column(name = "NUMBER")
+    public String getNumber() {
+        return number;
+    }
+
+    @OneToMany(
+    targetEntity = Item.class,
+    mappedBy = "invoice",
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY
+    )
+    public List<Item> getItems() {
+        return items;
     }
 
     private void setId(int id) {
         this.id = id;
     }
 
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    @OneToMany(
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    public List<Item> getItems() {
-        return items;
+    private void setNumber(String number) {
+        this.number = number;
     }
 
     private void setItems(List<Item> items) {
         this.items = items;
     }
+
+
 }

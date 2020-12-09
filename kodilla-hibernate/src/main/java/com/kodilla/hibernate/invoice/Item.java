@@ -13,6 +13,7 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
+    private Invoice invoice;
 
 
     public Item() {
@@ -27,7 +28,7 @@ public class Item {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ITEM_ID")
+    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -37,13 +38,11 @@ public class Item {
     }
 
     @NotNull
-    @Column(name = "PRODUCT")
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    //relacja N:1 z encją Product
     public Product getProduct() {
         return product;
-    }
-
-    private void setProduct(Product product) {
-        this.product = product;
     }
 
     @NotNull
@@ -52,17 +51,9 @@ public class Item {
         return price;
     }
 
-    private void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
-    }
-
-    private void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Column(name = "VALUE")
@@ -71,7 +62,29 @@ public class Item {
         return value;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    private void setProduct(Product product) {
+        this.product = product;
+    }
+
+    private void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    private void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     private void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 }
