@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /*@ExtendWith(SpringExtension.class)*/
@@ -70,6 +71,10 @@ public class InvoiceDaoTestSuite {
         assertNotEquals(0, invoice1ID);
         assertNotEquals(0, invoice2ID);
         assertNotEquals(0, invoice3ID);
+        assertEquals("001/2020", invoice1.getNumber());
+        assertEquals(item6, invoice3.getItems().get(0));
+        assertEquals(true, item2.getProduct().getName().equals("Chair"));
+        assertEquals(new BigDecimal(5), item1.getPrice());
 
 
         //CleanUp
